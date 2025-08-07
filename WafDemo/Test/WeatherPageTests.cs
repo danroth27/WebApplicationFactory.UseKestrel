@@ -10,15 +10,13 @@ public class WeatherPageTests : PageTest
     {
         using var waf = new BlazorWebAppFactory();
 
-        // 
-        // _ = waf.CreateClient();
+        // var httpClient = waf.CreateClient();
 
         waf.UseKestrel();
         waf.StartServer();
 
-        await Task.Delay(30000);
-        var privacyPagePath = waf.ClientOptions.BaseAddress.ToString() + "weather";
-        var response = await Page.GotoAsync(privacyPagePath);
+        var weatherPagePath = waf.ClientOptions.BaseAddress.ToString() + "weather";
+        var response = await Page.GotoAsync(weatherPagePath);
         var content = await response!.TextAsync();
 
         await Expect(Page).ToHaveTitleAsync("Weather");

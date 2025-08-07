@@ -9,12 +9,9 @@ public class PrivacyPageTests : PageTest
     [Fact]
     public async Task Page_LoadsSuccessfully()
     {
-        #region Not supported approach
-        // 
-        // _ = waf.CreateClient();
-        #endregion
-
         using var waf = new RazorWebFactory();
+
+        // var httpClient = waf.CreateClient();
 
         waf.UseKestrel();
         waf.StartServer();
